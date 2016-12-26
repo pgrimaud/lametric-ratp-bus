@@ -30,8 +30,8 @@ class Response
             'frames' => [
                 [
                     'index' => 0,
-                    'text' => 'Please check app configuration',
-                    'icon' => Icon::ICON_ERROR
+                    'text'  => 'Please check app configuration',
+                    'icon'  => Icon::ICON_ERROR
                 ]
             ]
         ]);
@@ -67,26 +67,26 @@ class Response
      */
     public function returnResponse()
     {
-        $destination = (string)$this->body['response']['schedules'][0]['destination'];
-        $message = str_replace('mn', 'min', (string)$this->body['response']['schedules'][0]['message']);
-        $message2 = str_replace('mn', 'min', (string)$this->body['response']['schedules'][1]['message']);
+        $destination = (string)$this->body['response']['informations']['line'] . ' - ' . $this->body['response']['schedules'][0]['destination'];
+        $message     = str_replace('mn', 'min', (string)$this->body['response']['schedules'][0]['message']);
+        $message2    = str_replace('mn', 'min', (string)$this->body['response']['schedules'][1]['message']);
 
         $data = [
             'frames' => [
                 [
                     'index' => 0,
-                    'text' => $destination,
-                    'icon' => $this->icon->getIconCode()
+                    'text'  => $destination,
+                    'icon'  => $this->icon->getIconCode()
                 ],
                 [
                     'index' => 1,
-                    'text' => $message,
-                    'icon' => $this->icon->getIconCode()
+                    'text'  => $message,
+                    'icon'  => $this->icon->getIconCode()
                 ],
                 [
                     'index' => 2,
-                    'text' => $message2,
-                    'icon' => $this->icon->getIconCode()
+                    'text'  => $message2,
+                    'icon'  => $this->icon->getIconCode()
                 ]
             ]
         ];
