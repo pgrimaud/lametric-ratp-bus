@@ -11,11 +11,6 @@ class Transport
     /**
      * @var string
      */
-    private $idLine;
-
-    /**
-     * @var string
-     */
     private $line;
 
     /**
@@ -74,14 +69,6 @@ class Transport
     public function getDestination()
     {
         return $this->destination;
-    }
-
-    /**
-     * @return string
-     */
-    public function getIdLine()
-    {
-        return $this->idLine;
     }
 
 }
