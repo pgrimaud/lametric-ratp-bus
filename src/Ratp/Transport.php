@@ -24,11 +24,6 @@ class Transport
     private $station;
 
     /**
-     * @var string
-     */
-    private $type;
-
-    /**
      * Transport constructor.
      * @param array $params
      */
@@ -58,30 +53,6 @@ class Transport
     }
 
     /**
-     * @throws TransportException
-     */
-    public function setLine()
-    {
-        $transportTypesAllowed = [
-            'metro',
-            'rer',
-            'tramway'
-        ];
-
-        foreach ($transportTypesAllowed as $transportType) {
-            if (strpos($this->line, $transportType) !== false) {
-                $this->type = $transportType;
-                $this->idLine = str_replace($transportType, '', $this->line);
-                break;
-            }
-        }
-
-        if (empty($this->line) || empty($this->type)) {
-            throw new TransportException;
-        }
-    }
-
-    /**
      * @return string
      */
     public function getLine()
@@ -103,14 +74,6 @@ class Transport
     public function getDestination()
     {
         return $this->destination;
-    }
-
-    /**
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 
     /**
