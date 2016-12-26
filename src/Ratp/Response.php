@@ -76,7 +76,7 @@ class Response
                 [
                     'index' => 0,
                     'text'  => $destination,
-                    'icon'  => $this->icon->getIconCode()
+                    'icon'  => Icon::ICON_BUS
                 ],
                 [
                     'index' => 1,
