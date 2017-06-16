@@ -2,6 +2,10 @@
 
 ![LaMetric Bus Ratp Index](https://raw.githubusercontent.com/pgrimaud/lametric-ratp-bus/master/images/ratpbus.png)
 
+# 2017-06-16 - Important update
+
+### Parameters data have changed, due to the change of middleware. You must reconfigure your app and follow the instructions bellow. Sorry for inconvenience. 
+
 # How it works ?
 
 First, launch your LaMetric app, install our app "RATP Bus Schedules".
@@ -12,50 +16,37 @@ Then, find the line, the ID Destination and ID Station from the [API RATP](https
 
 ####Example : 
 
-If you want to get the schedules of the next bus to **Chateau de Vincennes** at the station **Montgallet**, on the line **46**.
+If you want to get the schedules of the next bus to **Chateau de Vincennes** at the station **Michel Bizot**, on the line **46**.
 
--	Open http://api-ratp.pierre-grimaud.fr/v2/bus/46, you will get : 
+- Open https://api-ratp.pierre-grimaud.fr/v3/destinations/bus/46, you will get : 
 
 ```
 {
-    "response": {
+    "result": {
         "destinations": [
             {
-                "id_destination": "5",
-                "destination": "Château de Vincennes",
-                "slug": "chateau+de+vincennes"
+                "name": "Chateau de Vincennes",
+                "way": "A"
             },
             {
-                "id_destination": "183",
-                "destination": "Gare du Nord",
-                "slug": "gare+du+nord"
+                "name": "Gare du Nord",
+                "way": "R"
             }
-        ],
-        "stations": [
-            ...
-            {
-                "id": "2929",
-                "name": "Montgallet",
-                "slug": "montgallet"
-            },
-            ...
-           }
         ]
     },
-    "_meta": {
-        "version": "2",
-        "date": "2016-12-26T18:32:58+01:00",
-        "call": "GET /bus/46"
+    "_metadata": {
+        "call": "GET /destinations/bus/46",
+        "date": "2017-06-16T02:31:26+02:00",
+        "version": 3
     }
 }
 ```
 
--	Find the ```id_destination``` of the desired destination (5 for **Chateau de Vincennes**).
+ - Find the ```way``` of the desired destination (A for **Chateau de Vincennes**) and set it on the configuration panel.
 
--	And find the ```id``` of the desired station (2929 for **Montgallet**).
+ - Set the name of the station (michel bizot for **Michel Bizot**).
 
-- 	Set this numbers on LaMetric app, wait a few seconds and you will see :
-
+ - Wait a few seconds and you will see :
 
 ![LaMetric Ratp Destination](https://raw.githubusercontent.com/pgrimaud/lametric-ratp-bus/master/images/destination.gif)
 ![LaMetric Ratp Schedule](https://raw.githubusercontent.com/pgrimaud/lametric-ratp-bus/master/images/schedules.gif)
