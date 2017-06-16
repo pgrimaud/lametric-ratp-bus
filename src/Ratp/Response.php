@@ -93,4 +93,20 @@ class Response
 
         return $this->asJson($data);
     }
+
+    /**
+     * @return mixed
+     */
+    public function updateError()
+    {
+        return $this->asJson([
+            'frames' => [
+                [
+                    'index' => 0,
+                    'text'  => 'Please update application',
+                    'icon'  => Icon::ICON_ERROR
+                ]
+            ]
+        ]);
+    }
 }

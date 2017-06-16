@@ -6,7 +6,7 @@ class Transport
     /**
      * @var string
      */
-    private $destination;
+    private $way;
 
     /**
      * @var string
@@ -34,9 +34,13 @@ class Transport
     {
         $rowsToCheck = [
             'line',
-            'destination',
+            'way',
             'station'
         ];
+
+        if (!isset($this->params['way'])) {
+            throw new UpdateException;
+        }
 
         foreach ($rowsToCheck as $row) {
             if (!isset($this->params[$row]) || empty($this->params[$row])) {
@@ -68,7 +72,7 @@ class Transport
      */
     public function getDestination()
     {
-        return $this->destination;
+        return $this->way;
     }
 
 }
