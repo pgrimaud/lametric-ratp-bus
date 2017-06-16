@@ -28,7 +28,7 @@ try {
     $response->setIcon($icon);
     $response->setBody($body);
 
-    echo $response->returnResponse();
+    echo $response->returnResponse($transport->getLine());
 
 } catch (Exception $e) {
 

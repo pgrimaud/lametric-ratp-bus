@@ -65,11 +65,12 @@ class Response
     /**
      * @return mixed
      */
-    public function returnResponse()
+    public function returnResponse($line)
     {
-        $destination = (string)$this->body['response']['informations']['line'] . ' - ' . $this->body['response']['schedules'][0]['destination'];
-        $message     = str_replace('mn', 'min', (string)$this->body['response']['schedules'][0]['message']);
-        $message2    = str_replace('mn', 'min', (string)$this->body['response']['schedules'][1]['message']);
+        $destination = (string)$line . ' - ' . $this->body['result']['schedules'][0]['destination'];
+
+        $message  = str_replace('mn', 'min', (string)$this->body['result']['schedules'][0]['message']);
+        $message2 = str_replace('mn', 'min', (string)$this->body['result']['schedules'][1]['message']);
 
         $data = [
             'frames' => [
