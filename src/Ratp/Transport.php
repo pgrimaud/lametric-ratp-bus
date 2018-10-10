@@ -1,4 +1,5 @@
 <?php
+
 namespace Lametric\Ratp;
 
 class Transport
@@ -19,6 +20,11 @@ class Transport
     private $station;
 
     /**
+     * @var array
+     */
+    private $params;
+
+    /**
      * Transport constructor.
      * @param array $params
      */
@@ -29,6 +35,7 @@ class Transport
 
     /**
      * @throws TransportException
+     * @throws UpdateException
      */
     public function validateParameters()
     {
@@ -74,5 +81,4 @@ class Transport
     {
         return $this->way;
     }
-
 }

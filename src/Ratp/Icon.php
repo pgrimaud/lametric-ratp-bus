@@ -1,10 +1,11 @@
 <?php
+
 namespace Lametric\Ratp;
 
 class Icon
 {
     const ICON_ERROR = 'i2600';
-    const ICON_BUS = 'i6364';
+    const ICON_BUS   = 'i6364';
 
     /**
      * @var Transport
