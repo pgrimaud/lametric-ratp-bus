@@ -23,7 +23,7 @@ try {
 
     //data from api
     $client = new GuzzleHttp\Client();
-    $body   = $client->get($api->getUrlToCall())->getBody();
+    $body   = (string)$client->get($api->getUrlToCall())->getBody();
 
     //get icon linked to the line
     $icon = new Lametric\Ratp\Icon($transport);
