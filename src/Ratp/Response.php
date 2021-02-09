@@ -74,8 +74,14 @@ class Response
     {
         $destination = (string)$line . ' - ' . $this->body['result']['schedules'][0]['destination'];
 
-        $message  = str_replace('mn', 'min', (string)$this->body['result']['schedules'][0]['message']);
-        $message2 = str_replace('mn', 'min', (string)$this->body['result']['schedules'][1]['message']);
+        $message = str_replace('mn', 'min', (string)$this->body['result']['schedules'][0]['message']);
+
+        if (isset($this->body['result']['schedules'][1])) {
+            $message2 = str_replace('mn', 'min', (string)$this->body['result']['schedules'][1]['message']);
+        } else {
+            $message2 = str_replace('mn', 'min', (string)$this->body['result']['schedules'][0]['message']);
+        }
+
 
         $data = [
             'frames' => [

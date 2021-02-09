@@ -36,7 +36,6 @@ try {
     echo $response->returnResponse($transport->getLine());
 
 } catch (Exception $e) {
-
     if ($e instanceof Ratp\UpdateException) {
         $response = new Lametric\Ratp\Response();
         echo $response->updateError();
@@ -44,5 +43,4 @@ try {
         $response = new Lametric\Ratp\Response();
         echo $response->returnError();
     }
-
 }
