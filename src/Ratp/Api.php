@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lametric\Ratp;
 
 class Api
@@ -9,12 +11,12 @@ class Api
     /**
      * @var string
      */
-    private $urlToCall;
+    private string $urlToCall;
 
     /**
      * @var Transport
      */
-    private $transport;
+    private Transport $transport;
 
     /**
      * Api constructor.
@@ -25,7 +27,7 @@ class Api
         $this->transport = $transport;
     }
 
-    public function createUrlToCall()
+    public function createUrlToCall(): void
     {
         $this->urlToCall = self::API_URL . '/schedules/bus/'
             . strtolower($this->transport->getLine()) . '/'
@@ -36,7 +38,7 @@ class Api
     /**
      * @return string
      */
-    public function getUrlToCall()
+    public function getUrlToCall(): string
     {
         return (string)$this->urlToCall;
     }

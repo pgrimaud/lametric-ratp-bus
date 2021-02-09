@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lametric\Ratp;
 
 class Response
@@ -7,7 +9,7 @@ class Response
     /**
      * @var Icon
      */
-    private $icon;
+    private Icon $icon;
 
     /**
      * @var mixed
@@ -25,16 +27,16 @@ class Response
     /**
      * @return mixed
      */
-    public function returnError()
+    public function returnError(): string
     {
         return $this->asJson([
             'frames' => [
                 [
                     'index' => 0,
                     'text'  => 'Please check app configuration',
-                    'icon'  => Icon::ICON_ERROR
-                ]
-            ]
+                    'icon'  => Icon::ICON_ERROR,
+                ],
+            ],
         ]);
     }
 
@@ -42,31 +44,33 @@ class Response
      * @param array $data
      * @return mixed
      */
-    public function asJson($data = array())
+    public function asJson(array $data = []): string
     {
-        return json_encode($data, JSON_PRETTY_PRINT);
+        return json_encode($data);
     }
 
     /**
      * @param Icon $icon
      */
-    public function setIcon($icon)
+    public function setIcon(Icon $icon): void
     {
         $this->icon = $icon;
     }
 
     /**
-     * @param mixed $body
+     * @param string $body
      */
-    public function setBody($body)
+    public function setBody(string $body): void
     {
         $this->body = json_decode($body, true);
     }
 
     /**
-     * @return mixed
+     * @param string $line
+     *
+     * @return string
      */
-    public function returnResponse($line)
+    public function returnResponse(string $line): string
     {
         $destination = (string)$line . ' - ' . $this->body['result']['schedules'][0]['destination'];
 
@@ -78,37 +82,37 @@ class Response
                 [
                     'index' => 0,
                     'text'  => $destination,
-                    'icon'  => Icon::ICON_BUS
+                    'icon'  => Icon::ICON_BUS,
                 ],
                 [
                     'index' => 1,
                     'text'  => $message,
-                    'icon'  => $this->icon->getIconCode()
+                    'icon'  => $this->icon->getIconCode(),
                 ],
                 [
                     'index' => 2,
                     'text'  => $message2,
-                    'icon'  => $this->icon->getIconCode()
-                ]
-            ]
+                    'icon'  => $this->icon->getIconCode(),
+                ],
+            ],
         ];
 
         return $this->asJson($data);
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function updateError()
+    public function updateError(): string
     {
         return $this->asJson([
             'frames' => [
                 [
                     'index' => 0,
                     'text'  => 'Please update application',
-                    'icon'  => Icon::ICON_ERROR
-                ]
-            ]
+                    'icon'  => Icon::ICON_ERROR,
+                ],
+            ],
         ]);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lametric\Ratp;
 
 class Transport
@@ -7,28 +9,27 @@ class Transport
     /**
      * @var string
      */
-    private $way;
+    private string $way;
 
     /**
      * @var string
      */
-    private $line;
+    private string $line;
 
     /**
      * @var string
      */
-    private $station;
+    private string $station;
 
     /**
      * @var array
      */
-    private $params;
+    private array $params;
 
     /**
-     * Transport constructor.
      * @param array $params
      */
-    public function __construct($params = array())
+    public function __construct(array $params = [])
     {
         $this->params = $params;
     }
@@ -37,12 +38,12 @@ class Transport
      * @throws TransportException
      * @throws UpdateException
      */
-    public function validateParameters()
+    public function validateParameters(): void
     {
         $rowsToCheck = [
             'line',
             'way',
-            'station'
+            'station',
         ];
 
         if (!isset($this->params['way'])) {
@@ -61,7 +62,7 @@ class Transport
     /**
      * @return string
      */
-    public function getLine()
+    public function getLine(): string
     {
         return $this->line;
     }
@@ -69,7 +70,7 @@ class Transport
     /**
      * @return string
      */
-    public function getStation()
+    public function getStation(): string
     {
         return $this->station;
     }
@@ -77,7 +78,7 @@ class Transport
     /**
      * @return string
      */
-    public function getDestination()
+    public function getDestination(): string
     {
         return $this->way;
     }

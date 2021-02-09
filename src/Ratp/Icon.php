@@ -1,21 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lametric\Ratp;
 
 class Icon
 {
     const ICON_ERROR = 'i2600';
-    const ICON_BUS   = 'i6364';
+    const ICON_BUS = 'i6364';
 
     /**
      * @var Transport
      */
-    private $transport;
+    private Transport $transport;
 
     /**
      * @var string
      */
-    private $iconCode;
+    private string $iconCode;
 
     /**
      * Icons constructor.
@@ -28,9 +30,9 @@ class Icon
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    private function getIcon()
+    private function getIcon(): string
     {
         $icons = [
             'default' => 'i2600',
@@ -51,7 +53,7 @@ class Icon
             'metro13' => 'i2616',
             'metro14' => 'i2619',
             'rera'    => 'i2620',
-            'rerb'    => 'i2621'
+            'rerb'    => 'i2621',
         ];
 
         return isset($icons[$this->transport->getLine()]) ? $icons[$this->transport->getLine()] : $icons['default'];
@@ -60,7 +62,7 @@ class Icon
     /**
      * @return mixed
      */
-    public function getIconCode()
+    public function getIconCode(): string
     {
         return $this->iconCode;
     }

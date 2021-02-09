@@ -1,6 +1,11 @@
 <?php
 
-require_once __DIR__ . '/vendor/autoload.php';
+declare(strict_types=1);
+
+require_once __DIR__ . '/../vendor/autoload.php';
+$config = require_once __DIR__ . '/../config/parameters.php';
+
+Sentry\init(['dsn' => $config['sentry_key']]);
 
 use Lametric\Ratp;
 
